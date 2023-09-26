@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import React from "react"
 import Formulario from "./Formulario"
+import { RecoilRoot } from "recoil"
 
 // "oque testa"
 test("quando o input está vazio, novos participantes não podem ser adicionados", () => {
@@ -21,7 +22,11 @@ test("quando o input está vazio, novos participantes não podem ser adicionados
 })
 
 test("adicionar um participante caso exista um nome preenchido", () => {
-  render(<Formulario />)
+  render(
+    <RecoilRoot>
+      <Formulario />
+    </RecoilRoot>
+  )
   const input = screen.getByPlaceholderText("Inisira o nome do participante")
   const botao = screen.getByRole("button")
 
